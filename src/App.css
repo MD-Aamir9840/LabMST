@@ -1,0 +1,324 @@
+/* ---------- Reset & Background ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  
+  /* 🌟 NEW BACKGROUND: Modern Dark Ocean Gradient */
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  background-size: 300% 300%;
+  animation: gradientShift 14s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ---------- App Card ---------- */
+.app {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(14px);
+  padding: 2.5rem 2rem;
+  border-radius: 22px;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  animation: floatIn 0.7s ease-out;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.app:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- Heading ---------- */
+h1 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.8rem;
+  background: linear-gradient(90deg, #4a3f8a, #667eea, #f093fb);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease;
+}
+
+h1:hover {
+  transform: scale(1.04);
+}
+
+/* ---------- Login Card ---------- */
+.login-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: fadeUp 0.5s ease-out;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.login-label {
+  font-weight: 700;
+  color: #4a3f8a;
+  font-size: 0.9rem;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  color: #1a1a2e;
+  background: #ffffff;
+  border: 2px solid #e0e4f0;
+  border-radius: 12px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.login-input:hover {
+  border-color: #b8c2e8;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.18);
+  transform: translateY(-1px);
+}
+
+/* ---------- Button Row ---------- */
+.btn-row {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+/* ---------- Base Button ---------- */
+.btn {
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+              background-position 0.5s ease;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.btn:hover::before {
+  left: 130%;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+.btn:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+/* ---------- Button Variants ---------- */
+.btn-admin {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: 200% 200%;
+  box-shadow: 0 6px 18px rgba(102, 126, 234, 0.45);
+}
+
+.btn-admin:hover {
+  background-position: 100% 0;
+  box-shadow: 0 12px 26px rgba(118, 75, 162, 0.55);
+}
+
+.btn-viewer {
+  background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  background-size: 200% 200%;
+  box-shadow: 0 6px 18px rgba(17, 153, 142, 0.45);
+}
+
+.btn-viewer:hover {
+  background-position: 100% 0;
+  box-shadow: 0 12px 26px rgba(56, 239, 125, 0.55);
+}
+
+.btn-delete {
+  background: linear-gradient(135deg, #ff5f6d 0%, #ffc371 100%);
+  background-size: 200% 200%;
+  box-shadow: 0 6px 18px rgba(255, 95, 109, 0.45);
+  margin-top: 0.8rem;
+  flex: none;
+  padding: 0.8rem 1.8rem;
+}
+
+.btn-delete:hover {
+  background-position: 100% 0;
+  box-shadow: 0 12px 26px rgba(255, 95, 109, 0.6);
+}
+
+.btn-logout {
+  background: linear-gradient(135deg, #434343 0%, #000000 100%);
+  background-size: 200% 200%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  margin-top: 1.8rem;
+  flex: none;
+  padding: 0.8rem 1.8rem;
+}
+
+.btn-logout:hover {
+  background-position: 100% 0;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Dashboard ---------- */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeUp 0.5s ease-out;
+}
+
+.welcome-box {
+  width: 100%;
+  text-align: center;
+  padding: 1.2rem 1rem;
+  border-radius: 14px;
+  margin-bottom: 1.4rem;
+  background: linear-gradient(135deg, #eaf4ff 0%, #f5eaff 100%);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.welcome-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #2a2a4a;
+}
+
+.username {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Role Badge ---------- */
+.role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-left: 0.3rem;
+  transition: transform 0.3s ease;
+}
+
+.role-badge:hover {
+  transform: scale(1.08);
+}
+
+.badge-admin {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.45);
+}
+
+.badge-viewer {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(17, 153, 142, 0.45);
+}
+
+/* ---------- Role Content ---------- */
+.role-content {
+  width: 100%;
+  text-align: center;
+}
+
+.role-desc {
+  color: #4a4a6a;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.viewer-msg {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e8fff4 0%, #d5f5e3 100%);
+  border-left: 5px solid #38ef7d;
+  font-weight: 700;
+  color: #0b6b3a;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.viewer-msg:hover {
+  transform: translateX(4px);
+  box-shadow: 0 8px 22px rgba(17, 153, 142, 0.25);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 500px) {
+  .app {
+    padding: 1.8rem 1.2rem;
+  }
+  h1 {
+    font-size: 1.25rem;
+  }
+  .btn-row {
+    flex-direction: column;
+  }
+  .welcome-text {
+    font-size: 1.05rem;
+  }
+}
